@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+li a, li img{
+  outline: none;
+  display: block;
+  border: none;
+  max-width: 100%;
+}
+li{
+  list-style: none;
+}
+
+/*hay que agregar las animaciones de grid-lod desde typescript*/
