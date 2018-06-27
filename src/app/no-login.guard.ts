@@ -16,6 +16,5 @@ export class NoLoginGuard implements CanActivate {
         this.router.navigate(['/admin']);
         return false;
       }
-    return true;
   }
 }
