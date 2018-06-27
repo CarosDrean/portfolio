@@ -10,14 +10,16 @@ import {
   AdminComponent,
   LoginComponent
 } from './components/index.paginas';
+import { LoginGuard } from './login.guard';
+import { NoLoginGuard } from './no-login.guard';
 
 const routes: Routes = [
   { path: 'home', component: ProyectosComponent },
   { path: 'detalle', component: DetalleProyectoComponent },
   { path: 'acercade', component: AcercadeComponent },
   { path: 'contacto', component: ContactoComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [LoginGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [NoLoginGuard] },
   { path: 'noencontrado', component: NoEncontradoComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 

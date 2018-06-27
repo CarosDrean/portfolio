@@ -13,6 +13,9 @@ import { AcercadeComponent } from './components/acercade/acercade.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { LoginGuard } from './login.guard';
+import { NoLoginGuard } from './no-login.guard';
 
 @NgModule({
   declarations: [
@@ -29,9 +32,10 @@ import { LoginComponent } from './components/login/login.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [LoginGuard, NoLoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

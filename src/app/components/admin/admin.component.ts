@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare var jQuery: any;
 declare var $: any;
@@ -12,12 +13,17 @@ declare var $: any;
 })
 export class AdminComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
     // this.loadScript('../../../assets/js/main.js');
   }
 
   ngOnInit() {
     this.loadScript();
+  }
+
+  logoout() {
+    localStorage.removeItem('key');
+    this.router.navigate(['/home']);
   }
 
   public loadScript() {
