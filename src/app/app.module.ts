@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { rutas } from './app.routes';
+import { AppRoutingModule } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -12,6 +12,7 @@ import { NoEncontradoComponent } from './components/no-encontrado/no-encontrado.
 import { AcercadeComponent } from './components/acercade/acercade.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +24,12 @@ import { AdminComponent } from './components/admin/admin.component';
     NoEncontradoComponent,
     AcercadeComponent,
     ContactoComponent,
-    AdminComponent
+    AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    rutas
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

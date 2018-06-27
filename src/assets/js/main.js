@@ -1,8 +1,6 @@
-jQuery(document).ready(function($) {
-
+/*$(function() {
 	var cols = {},
-
-		messageIsOpen = false;
+  messageIsOpen = false;
 
 	cols.showOverlay = function() {
 		$('body').addClass('show-main-overlay');
@@ -113,7 +111,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-});
+});*/
 /*! nanoScrollerJS - v0.8.0 - 2014
 * https://jamesflorentino.github.com/nanoScrollerJS/
 * Copyright (c) 2014 James Florentino; Licensed MIT */

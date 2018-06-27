@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {
@@ -6,7 +7,8 @@ import {
   AcercadeComponent,
   ContactoComponent,
   NoEncontradoComponent,
-  AdminComponent
+  AdminComponent,
+  LoginComponent
 } from './components/index.paginas';
 
 const routes: Routes = [
@@ -15,14 +17,24 @@ const routes: Routes = [
   { path: 'acercade', component: AcercadeComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'noencontrado', component: NoEncontradoComponent },
-  { path: '**', pathMatch: 'full', redirectTo: 'noencontrado' },
+  { path: '**', pathMatch: 'full', redirectTo: 'home' },
 
-  // { path: 'path/:routeParam', component: MyComponent },
-  // { path: 'staticPath', component: ... },
-  // { path: '**', component: ... },
-  // { path: 'oldPath', redirectTo: '/staticPath' },
-  // { path: ..., component: ..., data: { message: 'Custom' }
 ];
 
-export const rutas = RouterModule.forRoot(routes, {useHash: true});
+@NgModule({
+  imports: [
+    RouterModule.forRoot(
+      routes,
+      {
+        enableTracing: true,
+      }
+    )
+  ],
+  exports: [
+    RouterModule
+  ],
+  providers: []
+})
+export class AppRoutingModule { }
