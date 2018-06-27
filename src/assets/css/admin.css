@@ -3,7 +3,6 @@
 }
 body {
   background: #fff;
-  font-family: Roboto, sans-serif;
   font-weight: 400;
   line-height: 1.5em;
   color: #888;
@@ -136,12 +135,23 @@ a:hover {
   margin: 0 50px 30px 50px;
   cursor: pointer;
 }
-#sidebar .compose-button:hover {
+.compose-button2 {
+  border-radius: 100px;
+  padding: 13px 20px;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #61c7b3;
+  border: 2px solid #61c7b3;
+  display: inline-block;
+  cursor: pointer;
+}
+#sidebar .compose-button:hover, .compose-button2:hover {
   color: #abb4be;
   border-color: #abb4be;
 }
 #sidebar .menu-segment {
-  padding: 0 50px 0 70px;
+  padding: 0 0px 0 0px;
 }
 #sidebar .menu-segment ul,
 #sidebar .menu-segment li {
@@ -172,7 +182,7 @@ a:hover {
 }
 #sidebar .menu-segment li a {
   display: block;
-  margin: 0 -50px 0 -70px;
+  margin: 0 -50px 0 0px;
   padding: 10px 50px 10px 70px;
 }
 #sidebar .menu-segment li a:hover {
