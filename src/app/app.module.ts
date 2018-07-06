@@ -17,6 +17,14 @@ import { FormsModule } from '@angular/forms';
 import { LoginGuard } from './login.guard';
 import { NoLoginGuard } from './no-login.guard';
 
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+
+import { ProyectosService } from './providers/proyectos.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +41,13 @@ import { NoLoginGuard } from './no-login.guard';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
-  providers: [LoginGuard, NoLoginGuard],
+  providers: [LoginGuard, NoLoginGuard, ProyectosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

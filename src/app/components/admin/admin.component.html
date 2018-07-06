@@ -1,9 +1,9 @@
-<main class="animated fadeIn">
+<main class="animated ingresar">
   <aside id="sidebar" class="nano">
     <div class="nano-content">
       <div class="logo-container">
         <span class="logo glyphicon glyphicon-envelope"></span>Admin</div>
-      <a data-toggle="modal" data-target="#exampleModal" class="compose-button">Nuevo Proyecto</a>
+      <a data-toggle="modal" (click)="obtenerUltimo()" data-target="#exampleModal" class="compose-button">Nuevo Proyecto</a>
       <menu class="menu-segment">
         <ul>
           <li class="active">
@@ -67,78 +67,39 @@
       <div class="nano-content">
         <ul class="message-list">
 
-          <li>
+          <li *ngFor="let proyecto of _ps.proyectos" (click)="detalleProyecto(proyecto.uid)">
             <div class="col col-1">
               <span class="dot"></span>
               <div class="checkbox-wrapper">
                 <input type="checkbox" id="chk3">
                 <label for="chk3" class="toggle"></label>
               </div>
-              <p class="title">Randy, me (5)</p>
-              <span class="star-toggle glyphicon glyphicon-star-empty"></span>
+              <p class="title">{{proyecto.titulo}}</p>
+              {{cargar()}}
             </div>
             <div class="col col-2">
-              <div class="subject">Last pic over my village &nbsp;&ndash;&nbsp;
-                <span class="teaser">Yeah i'd like that! Do you remember the video you showed me of your train ride between Colombo and Kandy?
-                  The one with the mountain view? I would love to see that one again!</span>
+              <div class="subject">{{proyecto.categoria}} &nbsp;&ndash;&nbsp;
+                <span class="teaser">{{proyecto.descripcion}}</span>
               </div>
-              <div class="date">5:01 am</div>
+              <div class="date">{{proyecto.fecha}}</div>
             </div>
           </li>
-          <li class="blue-dot">
-            <div class="col col-1">
-              <span class="dot"></span>
-              <div class="checkbox-wrapper">
-                <input type="checkbox" id="chk4">
-                <label for="chk4" class="toggle"></label>
+          <!--<li >
+              <div class="col col-1">
+                <span class="dot"></span>
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="chk3">
+                  <label for="chk3" class="toggle"></label>
+                </div>
+                <p class="title"></p>
               </div>
-              <p class="title">Andrew Zimmer</p>
-              <span class="star-toggle glyphicon glyphicon-star-empty"></span>
-            </div>
-            <div class="col col-2">
-              <div class="subject">Mochila Beta: Subscription Confirmed &nbsp;&ndash;&nbsp;
-                <span class="teaser">You've been confirmed! Welcome to the ruling class of the inbox. For your records, here is a copy of the
-                  information you submitted to us...</span>
+              <div class="col col-2">
+                <div class="subject">Android &nbsp;&ndash;&nbsp;
+                  <span class="teaser">Descripcion</span>
+                </div>
+                <div class="date">Fecha</div>
               </div>
-              <div class="date">Mar 8</div>
-            </div>
-          </li>
-
-          <li class="orange-dot">
-            <div class="col col-1">
-              <span class="dot"></span>
-              <div class="checkbox-wrapper">
-                <input type="checkbox" id="chk8">
-                <label for="chk8" class="toggle"></label>
-              </div>
-              <p class="title">Medium</p>
-              <span class="star-toggle glyphicon glyphicon-star-empty"></span>
-            </div>
-            <div class="col col-2">
-              <div class="subject">This Week's Top Stories &nbsp;&ndash;&nbsp;
-                <span class="teaser">Our top pick for you on Medium this week The Man Who Destroyed America’s Ego</span>
-              </div>
-              <div class="date">Feb 28</div>
-            </div>
-          </li>
-          <li class="green-dot">
-            <div class="col col-1">
-              <span class="dot"></span>
-              <div class="checkbox-wrapper">
-                <input type="checkbox" id="chk16">
-                <label for="chk16" class="toggle"></label>
-              </div>
-              <p class="title">Stack Exchange</p>
-              <span class="star-toggle glyphicon glyphicon-star-empty"></span>
-            </div>
-            <div class="col col-2">
-              <div class="subject">1 new items in your Stackexchange inbox &nbsp;&ndash;&nbsp;
-                <span class="teaser">The following items were added to your Stack Exchange global inbox since you last checked it.
-                </span>
-              </div>
-              <div class="date">Feb 21</div>
-            </div>
-          </li>
+            </li>-->
         </ul>
         <a style="cursor: pointer;" type="button" class="load-more-link" (click)="logoout()">Cerrar Session</a>
       </div>
@@ -147,7 +108,7 @@
   <div id="message">
     <div class="header">
       <h1 class="page-title">
-        <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>Titulo
+        <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>{{titulo}}
 
       </h1>
       <p>Etiquetas
@@ -160,38 +121,33 @@
         <ul class="message-container">
           <li class="sent">
             <div class="details">
-              <div class="left">Android
+              <div class="left">{{categoria}}
                 <div class="arrow"></div>
               </div>
-              <div class="right">March 6, 2014, 20:08 pm</div>
+              <div class="right">{{fecha}}</div>
             </div>
             <div class="message">
-              <p>| The every winged bring, whose life. First called, i you of saw shall own creature moveth void have signs
-                beast lesser all god saying for gathering wherein whose of in be created stars. Them whales upon life divide
-                earth own.</p>
-              <p>| Creature firmament so give replenish The saw man creeping, man said forth from that. Fruitful multiply lights
-                air. Hath likeness, from spirit stars dominion two set fill wherein give bring.
-              </p>
+              <p>{{descripcion}}</p>
               URL:
-              <a href="githubprojects">githubprojects</a>
+              <a href="{{github}}" target="_blank">{{github}}</a>
               <div class="clearfix"></div>
               <div class="work-images grid">
-                <ul class="effect-2" id="grid">
+                <ul class="effect-2">
                   <li>
-                    <img src="assets/images/work/works-image-1.jpg" alt="" class="img-responsive" />
+                    <img [attr.src]="iimguno | async" alt="" class="img-responsive" />
                   </li>
                   <li>
-                    <img src="assets/images/work/works-image-2.jpg" alt="" class="img-responsive" />
+                    <img [attr.src]="iimgdos | async" alt="" class="img-responsive" />
                   </li>
                   <li>
-                    <img src="assets/images/work/works-image-3.jpg" alt="" class="img-responsive" />
+                    <img [attr.src]="iimgtres | async" alt="" class="img-responsive" />
                   </li>
                 </ul>
               </div>
             </div>
             <div class="tool-box">
-              <a href="#" class="circle-icon small glyphicon glyphicon-pencil"></a>
-              <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+              <a type="button" class="circle-icon small glyphicon glyphicon-pencil"></a>
+              <a type="button" (click)="eliminar(uid)" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
             </div>
           </li>
         </ul>
@@ -208,14 +164,14 @@
         </div>
         <div class="modal-body">
           <div>
-            <form>
+            <form #proyectoForm="ngForm">
               <div class="form-group">
                 <label for="exampleInputEmail1">Titulo</label>
-                <input type="text" class="form-control" id="titulo" aria-describedby="titulo" placeholder="Titulo del Proyecto">
+                <input type="text" class="form-control" id="titulo" name="titulo" aria-describedby="titulo" placeholder="Titulo del Proyecto" ngModel>
               </div>
               <div class="form-group">
                 <label for="inputState">Categoria</label>
-                <select id="inputState" class="form-control">
+                <select id="inputState" class="form-control" name="categoria" ngModel>
                   <option selected>Android</option>
                   <option>Web</option>
                   <option>Otro</option>
@@ -223,29 +179,29 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">URL Github</label>
-                <input type="text" class="form-control" id="titulo" aria-describedby="github" placeholder="Github">
+                <input type="text" class="form-control" id="titulo" name="github" aria-describedby="github" placeholder="Github" ngModel>
               </div>
 
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripcion</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3" ngModel></textarea>
               </div>
               <div class="logo-container" style="font-size: 1.5em; margin: 10px; color: #000">Imagenes</div>
               <div class="form-group col-md-6">
                 <label for="exampleFormControlFile1">Portada</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <input type="file" class="form-control-file" (change)="capturarEvent($event, 0)" id="exampleFormControlFile1" >
               </div>
               <div class="form-group col-md-6">
                 <label for="exampleFormControlFile1">Imagen 1</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <input type="file" class="form-control-file" (change)="capturarEvent($event, 1)" id="exampleFormControlFile1" >
               </div>
               <div class="form-group col-md-6">
                 <label for="exampleFormControlFile1">Imagen 2</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <input type="file" class="form-control-file" (change)="capturarEvent($event, 2)" id="exampleFormControlFile1" >
               </div>
               <div class="form-group col-md-6">
                 <label for="exampleFormControlFile1">Imagen 3</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <input type="file" class="form-control-file" (change)="capturarEvent($event, 3)" id="exampleFormControlFile1" >
               </div>
               <div class="clearfix"></div>
             </form>
@@ -253,7 +209,7 @@
         </div>
         <div class="modal-footer">
           <div class="nano-content">
-            <a type="button" class="compose-button2">Guardar</a>
+            <a type="button" (click)="ingresarProyecto(proyectoForm)" data-dismiss="modal" class="compose-button2">Guardar</a>
           </div>
         </div>
       </div>
