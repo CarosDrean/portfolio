@@ -62,12 +62,12 @@ export class AdminComponent implements OnInit, OnDestroy {
     this._ps.cargarProyectos().subscribe( () => {
       this.cantidad = _ps.proyectos.length;
       this.cargarScript = true;
-      this.afAuth.authState.subscribe( user => {
-        if (!user) {
-          this.router.navigate(['/login']);
-        }
-      });
       // this.loadScript();
+    });
+    this.afAuth.authState.subscribe( user => {
+      if (!user) {
+        this.router.navigate(['/login']);
+      }
     });
   }
 
