@@ -8,7 +8,7 @@
         <ul>
           <li class="active">
             <a style="margin-right: 0px;" href="#">Proyectos
-              <span> (43)</span>
+              <span> ({{cantidad}})</span>
             </a>
           </li>
           <li>
@@ -67,7 +67,7 @@
       <div class="nano-content">
         <ul class="message-list">
 
-          <li *ngFor="let proyecto of _ps.proyectos" (click)="detalleProyecto(proyecto.uid)">
+          <li *ngFor="let proyecto of _ps.proyectos; let i = index" [attr.data-index]="i" (click)="detalleProyecto(proyecto.uid)">
             <div class="col col-1">
               <span class="dot"></span>
               <div class="checkbox-wrapper">
@@ -75,7 +75,7 @@
                 <label for="chk3" class="toggle"></label>
               </div>
               <p class="title">{{proyecto.titulo}}</p>
-              {{cargar()}}
+              {{cargar(i)}}
             </div>
             <div class="col col-2">
               <div class="subject">{{proyecto.categoria}} &nbsp;&ndash;&nbsp;

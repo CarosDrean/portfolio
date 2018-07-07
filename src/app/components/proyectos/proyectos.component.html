@@ -10,7 +10,7 @@
       </section>
       <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
           <figure class="effect-oscar">
-              <img src="assets/images/home-images/image-1.jpg" alt="" class="img-responsive" />
+              <img src="assets/images/portada.png" alt="" class="img-responsive" />
               <figcaption>
                   <h2>CarosDrean
                       <span> Identidad</span>
@@ -23,7 +23,7 @@
       <div class="clearfix"></div>
       <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
           <ul class="effect-2" id="grid">
-              <li *ngFor="let proyecto of proyectosI; let i = index" [attr.data-index]="i">
+              <li *ngFor="let proyecto of proyectosI; let i = index" [attr.data-index]="i" class="animated ingresar">
                   <figure class="effect-oscar">
                       <img [attr.src]="profileUrlI[i] | async" alt="" class="img-responsive" />
                       <figcaption>
@@ -35,23 +35,11 @@
                       </figcaption>
                   </figure>
               </li>
-              <!--<li>
-                  <figure class="effect-oscar">
-                      <img src="assets/images/home-images/image-4.jpg" alt="" class="img-responsive" />
-                      <figcaption>
-                          <h2>A Brand
-                              <span>new Agency</span>
-                          </h2>
-                          <p>Over 40,000 customers use our themes to power their</p>
-                          <a routerLink="/detalle">View more</a>
-                      </figcaption>
-                  </figure>
-              </li>-->
           </ul>
       </section>
       <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
           <ul class="effect-2" id="grid">
-              <li *ngFor="let proyecto of proyectosD; let i = index" [attr.data-index]="i">
+              <li *ngFor="let proyecto of proyectosD; let i = index" [attr.data-index]="i" class="animated ingresar">
                   <figure class="effect-oscar">
                       <img [attr.src]="profileUrlD[i] | async" alt="" class="img-responsive" />
                       <figcaption>
@@ -63,18 +51,6 @@
                       </figcaption>
                   </figure>
               </li>
-              <!--<li>
-                  <figure class="effect-oscar">
-                      <img src="assets/images/home-images/image-5.jpg" alt="" class="img-responsive" />
-                      <figcaption>
-                          <h2>A Brand
-                              <span>new Agency</span>
-                          </h2>
-                          <p>Over 40,000 customers use our themes to power their</p>
-                          <a routerLink="/detalle">View more</a>
-                      </figcaption>
-                  </figure>
-              </li>-->
           </ul>
       </section>
       <div class="clearfix"></div>

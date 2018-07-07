@@ -8,6 +8,8 @@ import { AngularFireStorage } from 'angularfire2/storage';
 
 import { ProyectosService } from '../../providers/proyectos.service';
 import { Proyecto } from '../../interfaces/proyecto.interface';
+import { AuthService } from '../../providers/auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 declare var jQuery: any;
 declare var $: any;
@@ -50,17 +52,26 @@ export class AdminComponent implements OnInit, OnDestroy {
   iimgtres: any;
   uid: number;
   imagenes: any[] = [];
+  cantidad = 0;
 
   ultimoLado = '';
 
-  constructor(private router: Router, db: AngularFirestore, public _ps: ProyectosService, private storage: AngularFireStorage) {
+  constructor(public authService: AuthService,
+    private router: Router, db: AngularFirestore,
+    public _ps: ProyectosService, private storage: AngularFireStorage, public afAuth: AngularFireAuth) {
     this._ps.cargarProyectos().subscribe( () => {
+      this.cantidad = _ps.proyectos.length;
+      this.cargarScript = true;
+      this.afAuth.authState.subscribe( user => {
+        if (!user) {
+          this.router.navigate(['/login']);
+        }
+      });
       // this.loadScript();
     });
   }
 
   ngOnInit() {
-    // this.loadScript();
   }
 
   ngOnDestroy() {
@@ -207,7 +218,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   logoout() {
-    localStorage.removeItem('key');
+    this.afAuth.auth.signOut();
+    // this.authService.logout();
     this.router.navigate(['/home']);
   }
 
@@ -218,11 +230,13 @@ export class AdminComponent implements OnInit, OnDestroy {
     $('body').removeClass('show-main-overlay');
   }
 
-  cargar() {
-    if (this.cargarScript) {
-      this.loadScript();
-      this.cargarScript = false;
-    }
+  cargar(dato) {
+    if (dato === this.cantidad - 1) {
+      if (this.cargarScript) {
+        this.loadScript();
+        this.cargarScript = false;
+      }
+     }
   }
 
   public loadScript() {

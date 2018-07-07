@@ -26,10 +26,7 @@ export class ProyectosService {
       map((proyectos: Proyecto[]) => {
         console.log(proyectos);
         this.proyectos = proyectos;
-        if (proyectos[2] !== undefined) {
-          console.log(proyectos[2]);
-          // this.cargarLados();
-        }
+        this.cargarLados();
       })
     );
   }
@@ -37,10 +34,8 @@ export class ProyectosService {
   cargarLados() {
     const cantidad = this.proyectos.length;
     const lado = Math.floor(cantidad / 2);
-    setTimeout(() => {
-      this.llenarDatosI(0, lado);
-      this.llenarDatosD(lado, cantidad);
-    }, 20);
+    this.llenarDatosI(0, lado);
+    this.llenarDatosD(lado, cantidad);
   }
 
   llenarDatosI(posicion, dato) {
@@ -50,15 +45,16 @@ export class ProyectosService {
       posicion++;
       console.log(this.proyectosI[posicion]);
     }
-    console.log(this.proyectosI);
   }
 
   llenarDatosD(posicion, dato) {
+    let contador = 0;
     while (posicion < dato) {
       console.log(posicion);
-      this.proyectosD[posicion] = this.proyectos[posicion];
-      console.log(this.proyectosD[posicion]);
+      this.proyectosD[contador] = this.proyectos[posicion];
+      console.log(this.proyectosD[contador]);
       posicion++;
+      contador++;
     }
   }
 

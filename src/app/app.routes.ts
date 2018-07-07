@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'detalle', component: DetalleProyectoComponent },
   { path: 'acercade', component: AcercadeComponent },
   { path: 'contacto', component: ContactoComponent },
-  { path: 'admin', component: AdminComponent, canActivate: [LoginGuard] },
-  { path: 'login', component: LoginComponent, canActivate: [NoLoginGuard] },
+  { path: 'admin', component: AdminComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'noencontrado', component: NoEncontradoComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 

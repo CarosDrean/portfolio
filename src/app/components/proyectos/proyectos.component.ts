@@ -10,7 +10,7 @@ import { Proyecto } from '../../interfaces/proyecto.interface';
 @Component({
   selector: 'app-proyectos',
   templateUrl: './proyectos.component.html',
-  styles: []
+  styleUrls: ['../../../assets/css/anim.css']
 })
 export class ProyectosComponent implements OnInit {
   profileUrlI: any[] = [];
@@ -21,11 +21,12 @@ export class ProyectosComponent implements OnInit {
 
   constructor(db: AngularFirestore, public _ps: ProyectosService, private storage: AngularFireStorage) {
     this._ps.cargarProyectos().subscribe(() => {
-      // this.cargarImagenesI();
-      // this.cargarImagenesD();
+      console.log('ver si se ejecuta');
+      this.cargarImagenesI();
+      this.cargarImagenesD();
     });
-    this._ps.cargarIzquierda().subscribe(() => this.cargarImagenesI());
-    this._ps.cargarDerecha().subscribe(() => this.cargarImagenesD());
+    // this._ps.cargarIzquierda().subscribe(() => this.cargarImagenesI());
+    // this._ps.cargarDerecha().subscribe(() => this.cargarImagenesD());
   }
 
   ngOnInit() {
