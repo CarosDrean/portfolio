@@ -24,7 +24,6 @@ export class ProyectosService {
     this.itemsCollection = this.afs.collection<Proyecto>('proyectos', ref => ref.orderBy('uid', 'desc'));
     return this.itemsCollection.valueChanges().pipe(
       map((proyectos: Proyecto[]) => {
-        console.log(proyectos);
         this.proyectos = proyectos;
         this.cargarLados();
       })
@@ -40,19 +39,15 @@ export class ProyectosService {
 
   llenarDatosI(posicion, dato) {
     while (posicion < dato) {
-      console.log(posicion);
       this.proyectosI[posicion] = this.proyectos[posicion];
       posicion++;
-      console.log(this.proyectosI[posicion]);
     }
   }
 
   llenarDatosD(posicion, dato) {
     let contador = 0;
     while (posicion < dato) {
-      console.log(posicion);
       this.proyectosD[contador] = this.proyectos[posicion];
-      console.log(this.proyectosD[contador]);
       posicion++;
       contador++;
     }
@@ -62,7 +57,6 @@ export class ProyectosService {
     // tslint:disable-next-line:max-line-length
     return this.afs.collection<Proyecto>('proyectos', ref => ref.where('lado', '==', 'izquierda')).valueChanges().pipe(
       map((proyecto: Proyecto[]) => {
-        console.log(proyecto);
         this.proyectosI = proyecto;
       })
     );

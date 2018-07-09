@@ -45,7 +45,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   categoria = 'Categoria';
   github = 'https://';
   fecha = '--/--/--';
-  descripcion = 'Descripcion del proyecto';
+  descripcion;
   iportada: any;
   iimguno: any;
   iimgdos: any;
@@ -53,6 +53,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   uid: number;
   imagenes: any[] = [];
   cantidad = 0;
+
+  dmark;
 
   ultimoLado = '';
 
@@ -101,10 +103,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   obtenerUltimo() {
-    console.log('se ejecuta');
     this._ps.obtenerUltimo().subscribe(() => {
       this.ultimoLado = this._ps.ultimo[0].lado;
-      console.log(this.ultimoLado);
     });
   }
 
@@ -116,11 +116,18 @@ export class AdminComponent implements OnInit, OnDestroy {
     }
   }
 
+  agregarSaltoLinea(palabra) {
+    const texto: string = palabra;
+    // tslint:disable-next-line:forin
+    const re = /./gi;
+    texto.replace(re, '. <br/>');
+    console.log(texto);
+  }
+
   ingresarProyecto(form: NgForm) {
-    console.log(this.obtenerLado());
+    this.agregarSaltoLinea(form.value.descripcion);
     if (this.verificarVacio(form)) {
       this.subirImagen();
-
       const proyecto: Proyecto = {
         uid: new Date().getTime(),
         fecha: this.obtenerFecha(),
@@ -240,7 +247,6 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   public loadScript() {
-    console.log('script');
     let messageIsOpen = false;
 
     function mostrarOver() {

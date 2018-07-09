@@ -25,6 +25,8 @@ import { environment } from '../environments/environment';
 
 import { ProyectosService } from './providers/proyectos.service';
 
+import { NgxMdModule } from 'ngx-md';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +44,7 @@ import { ProyectosService } from './providers/proyectos.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgxMdModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,

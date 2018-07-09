@@ -7,7 +7,7 @@ export interface Proyecto {
   github: string;
   descripcion: string;
   portada: string;
-  imguno: string;
-  imgdos: string;
-  imgtres: string;
+  imguno?: string;
+  imgdos?: string;
+  imgtres?: string;
 }

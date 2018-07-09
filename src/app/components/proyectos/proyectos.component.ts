@@ -21,7 +21,6 @@ export class ProyectosComponent implements OnInit {
 
   constructor(db: AngularFirestore, public _ps: ProyectosService, private storage: AngularFireStorage) {
     this._ps.cargarProyectos().subscribe(() => {
-      console.log('ver si se ejecuta');
       this.cargarImagenesI();
       this.cargarImagenesD();
     });
@@ -34,7 +33,6 @@ export class ProyectosComponent implements OnInit {
 
   cargarImagenesI() {
     this.proyectosI = this._ps.proyectosI;
-    console.log(this.proyectosI);
     // tslint:disable-next-line:forin
     for (const i in this.proyectosI) {
       this.profileUrlI[i] = this.detalleImagen(this.proyectosI[i].portada);
@@ -43,7 +41,6 @@ export class ProyectosComponent implements OnInit {
 
   cargarImagenesD() {
     this.proyectosD = this._ps.proyectosD;
-    console.log(this.proyectosD);
     // tslint:disable-next-line:forin
     for (const i in this.proyectosD) {
       this.profileUrlD[i] = this.detalleImagen(this.proyectosD[i].portada);
@@ -51,7 +48,6 @@ export class ProyectosComponent implements OnInit {
   }
 
   detalleImagen(nombre) {
-    console.log('ver');
     const ref = this.storage.ref('img/' + nombre);
     return ref.getDownloadURL();
   }

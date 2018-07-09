@@ -15,13 +15,14 @@ import { NoLoginGuard } from './no-login.guard';
 
 const routes: Routes = [
   { path: 'home', component: ProyectosComponent },
-  { path: 'detalle', component: DetalleProyectoComponent },
+  { path: 'detalle/:id', component: DetalleProyectoComponent },
   { path: 'acercade', component: AcercadeComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'login', component: LoginComponent },
   { path: 'noencontrado', component: NoEncontradoComponent },
-  { path: '**', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', pathMatch: 'full', redirectTo: '/noencontrado' },
 
 ];
 
